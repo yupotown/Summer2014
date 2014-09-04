@@ -83,6 +83,62 @@ public class SudokuSolver {
 			nums.add(row);
 		}
 		
+		// ある数字について、それが1つの行、列またはブロック内に入れられる場所が1箇所しかなければ確定
+		for (int n = 0; n < 9; ++n) {
+			for_i: for (int i = 0; i < 9; ++i) {
+				int rowX = 0, rowY = 0, rowCnt = 0;
+				int colX = 0, colY = 0, colCnt = 0;
+				int blockX = 0, blockY = 0, blockCnt = 0;
+				for (int j = 0; j < 9; ++j) {
+					{
+						// i 列目
+						int x = i, y = j;
+						if (next.sudoku.get(x, y) == n+1) {
+							continue for_i;
+						}
+						if (next.cand[x][y][n]) {
+							++rowCnt;
+							rowX = x;
+							rowY = y;
+						}
+					}
+					{
+						// i 行目
+						int x = j, y = i;
+						if (next.sudoku.get(x,  y) == n+1) {
+							continue for_i;
+						}
+						if (next.cand[x][y][n]) {
+							++colCnt;
+							colX = x;
+							colY = y;
+						}
+					}
+					{
+						// i ブロック
+						int x = (i % 3) * 3 + j % 3, y = (i / 3) * 3 + j / 3;
+						if (next.sudoku.get(x, y) == n+1) {
+							continue for_i;
+						}
+						if (next.cand[x][y][n]) {
+							++blockCnt;
+							blockX = x;
+							blockY = y;
+						}
+					}
+				}
+				if (rowCnt == 1) {
+					next.sudoku.set(rowX, rowY, n+1);
+				}
+				if (colCnt == 1) {
+					next.sudoku.set(colX, colY, n+1);
+				}
+				if (blockCnt == 1) {
+					next.sudoku.set(blockX, blockY, n+1);
+				}
+			}
+		}
+		
 		// すべてのマスが埋まっていればそれが答え
 		if (next.sudoku.isFilled()) {
 			builder.addAnswer(next.sudoku);
