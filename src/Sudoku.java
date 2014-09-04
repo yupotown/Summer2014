@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 
-public class Sudoku {
+public class Sudoku implements Cloneable {
 
 	public Sudoku() {
 	}
@@ -146,6 +146,17 @@ public class Sudoku {
 			res += CharCode.NL;
 		}
 		return res;
+	}
+	
+	@Override
+	public Sudoku clone() {
+		Sudoku sudoku = new Sudoku();
+		for (int y = 0; y < 9; ++y) {
+			for (int x = 0; x < 9; ++x) {
+				sudoku.set(x, y, this.get(x, y));
+			}
+		}
+		return sudoku;
 	}
 	
 	private int[][] cells = new int[9][9];
