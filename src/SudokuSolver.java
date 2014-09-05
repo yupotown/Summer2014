@@ -29,7 +29,7 @@ public class SudokuSolver {
 		
 		_State next = state.clone();
 		
-		// “ü‚è‚¤‚é”š‚ği‚é
+		// å…¥ã‚Šã†ã‚‹æ•°å­—ã‚’çµã‚‹
 		for (int x = 0; x < 9; ++x) {
 			for (int y = 0; y < 9; ++y) {
 				if (next.sudoku.get(x, y) != 0) {
@@ -59,9 +59,9 @@ public class SudokuSolver {
 			}
 		}
 		
-		// Šeƒ}ƒX‚É“ü‚é”š‚ğ—ñ‹“
-		// ”š‚ª‰½‚à“ü‚ê‚ç‚ê‚È‚¢‚Æ‚±‚ë‚ª1‚Â‚Å‚à‚ ‚ê‚Î‰ğ‚È‚µ
-		// “ü‚è‚¤‚é”š‚ª1‚Â‚¾‚¯‚Ì‚Æ‚±‚ë‚ÍŠm’è
+		// å„ãƒã‚¹ã«å…¥ã‚‹æ•°å­—ã‚’åˆ—æŒ™
+		// æ•°å­—ãŒä½•ã‚‚å…¥ã‚Œã‚‰ã‚Œãªã„ã¨ã“ã‚ãŒ1ã¤ã§ã‚‚ã‚ã‚Œã°è§£ãªã—
+		// å…¥ã‚Šã†ã‚‹æ•°å­—ãŒ1ã¤ã ã‘ã®ã¨ã“ã‚ã¯ç¢ºå®š
 		List<List<List<Integer>>> nums = new ArrayList<List<List<Integer>>>();
 		for (int x = 0; x < 9; ++x) {
 			List<List<Integer>> row = new ArrayList<List<Integer>>();
@@ -83,7 +83,7 @@ public class SudokuSolver {
 			nums.add(row);
 		}
 		
-		// ‚ ‚é”š‚É‚Â‚¢‚ÄA‚»‚ê‚ª1‚Â‚ÌsA—ñ‚Ü‚½‚ÍƒuƒƒbƒN“à‚É“ü‚ê‚ç‚ê‚éêŠ‚ª1‰ÓŠ‚µ‚©‚È‚¯‚ê‚ÎŠm’è
+		// ã‚ã‚‹æ•°å­—ã«ã¤ã„ã¦ã€ãã‚ŒãŒ1ã¤ã®è¡Œã€åˆ—ã¾ãŸã¯ãƒ–ãƒ­ãƒƒã‚¯å†…ã«å…¥ã‚Œã‚‰ã‚Œã‚‹å ´æ‰€ãŒ1ç®‡æ‰€ã—ã‹ãªã‘ã‚Œã°ç¢ºå®š
 		for (int n = 0; n < 9; ++n) {
 			for_i: for (int i = 0; i < 9; ++i) {
 				int rowX = 0, rowY = 0, rowCnt = 0;
@@ -91,7 +91,7 @@ public class SudokuSolver {
 				int blockX = 0, blockY = 0, blockCnt = 0;
 				for (int j = 0; j < 9; ++j) {
 					{
-						// i —ñ–Ú
+						// i åˆ—ç›®
 						int x = i, y = j;
 						if (next.sudoku.get(x, y) == n+1) {
 							continue for_i;
@@ -103,7 +103,7 @@ public class SudokuSolver {
 						}
 					}
 					{
-						// i s–Ú
+						// i è¡Œç›®
 						int x = j, y = i;
 						if (next.sudoku.get(x,  y) == n+1) {
 							continue for_i;
@@ -115,7 +115,7 @@ public class SudokuSolver {
 						}
 					}
 					{
-						// i ƒuƒƒbƒN
+						// i ãƒ–ãƒ­ãƒƒã‚¯
 						int x = (i % 3) * 3 + j % 3, y = (i / 3) * 3 + j / 3;
 						if (next.sudoku.get(x, y) == n+1) {
 							continue for_i;
@@ -139,12 +139,12 @@ public class SudokuSolver {
 			}
 		}
 		
-		// ‚·‚×‚Ä‚Ìƒ}ƒX‚ª–„‚Ü‚Á‚Ä‚¢‚ê‚Î‚»‚ê‚ª“š‚¦
+		// ã™ã¹ã¦ã®ãƒã‚¹ãŒåŸ‹ã¾ã£ã¦ã„ã‚Œã°ãã‚ŒãŒç­”ãˆ
 		if (next.sudoku.isFilled()) {
 			builder.addAnswer(next.sudoku);
 		} else {
-			// –„‚Ü‚Á‚Ä‚¢‚È‚¢ƒ}ƒX‚ª‚ ‚ê‚ÎA‚»‚±‚É“ü‚é”š‚ÌŒó•â‚ª2‚ÂˆÈã‚ ‚é
-			// ‚»‚ê‚¼‚ê‚ğ‰¼’è‚µ‚Ä‰ğ‚ğŒ©‚Â‚¯‚é
+			// åŸ‹ã¾ã£ã¦ã„ãªã„ãƒã‚¹ãŒã‚ã‚Œã°ã€ãã“ã«å…¥ã‚‹æ•°å­—ã®å€™è£œãŒ2ã¤ä»¥ä¸Šã‚ã‚‹
+			// ãã‚Œãã‚Œã‚’ä»®å®šã—ã¦è§£ã‚’è¦‹ã¤ã‘ã‚‹
 			List<Integer> cell = null;
 			int cellX = 0, cellY = 0;
 			for_x: for (int x = 0; x < 9; ++x) {
@@ -172,7 +172,7 @@ public class SudokuSolver {
 	private class _State implements Cloneable {
 		public Sudoku sudoku = new Sudoku();
 		
-		// cand[x][y][n] : ƒ}ƒX (x, y) ‚É”š n+1 ‚ª“ü‚è‚¤‚é‚© 
+		// cand[x][y][n] : ãƒã‚¹ (x, y) ã«æ•°å­— n+1 ãŒå…¥ã‚Šã†ã‚‹ã‹
 		public boolean[][][] cand = new boolean[9][9][9];
 		
 		public _State clone() {

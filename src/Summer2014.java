@@ -4,7 +4,7 @@ import java.io.*;
 public class Summer2014 {
 
 	public static void main(String[] args) throws IOException, SudokuFormatException {
-		// –â‘è‚Ì“Ç‚İ‚İ
+		// å•é¡Œã®èª­ã¿è¾¼ã¿
 		Sudoku problem;
 		if (args.length == 0) {
 			problem = new SudokuReader().read(System.in);
@@ -12,30 +12,30 @@ public class Summer2014 {
 			problem = new SudokuReader().read(new FileInputStream(args[0]));
 		}
 		
-		// –â‘è‚ğ•\¦
+		// å•é¡Œã‚’è¡¨ç¤º
 		System.out.println(problem);
 		
 		SudokuSolver solver = new SudokuSolver();
 		
-		// ŠÔŒv‘ªŠJn
+		// æ™‚é–“è¨ˆæ¸¬é–‹å§‹
 		long startTime = System.currentTimeMillis();
 		
-		// –â‘è‚ğ‰ğ‚­
+		// å•é¡Œã‚’è§£ã
 		SudokuSolverResult result = solver.solve(problem);
 		
-		// ŠÔŒv‘ªI—¹
+		// æ™‚é–“è¨ˆæ¸¬çµ‚äº†
 		long endTime = System.currentTimeMillis();
 		
 		if (result.hasAnswer()) {
-			// ‰ğ‚ª‚ ‚ê‚Î1‚Âo—Í
+			// è§£ãŒã‚ã‚Œã°1ã¤å‡ºåŠ›
 			System.out.println(result.getAnswer(0));
 			System.out.println("Number of answers: " + result.getAnswersCount());
 		} else {
-			// ‰ğ‚È‚µ
+			// è§£ãªã—
 			System.out.println("There's no answer.");
 		}
 		
-		// Œv‘ª‚µ‚½ŠÔ‚ğo—Í
+		// è¨ˆæ¸¬ã—ãŸæ™‚é–“ã‚’å‡ºåŠ›
 		System.out.println((endTime - startTime) + "ms");
 	}
 

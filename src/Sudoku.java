@@ -7,10 +7,10 @@ public class Sudoku implements Cloneable {
 	}
 	
 	/**
-	 * 1‚Â‚Ìƒ}ƒX‚Ì’l‚ğæ“¾‚·‚éB
-	 * @param x ƒ}ƒX‚ÌXÀ•W(0 <= x <= 8)
-	 * @param y ƒ}ƒX‚ÌYÀ•W(0 <= y <= 8)
-	 * @return (x, y) ‚Ìƒ}ƒX‚Ì’l(‹ó”’‚Í0)
+	 * 1ã¤ã®ãƒã‚¹ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚
+	 * @param x ãƒã‚¹ã®Xåº§æ¨™(0 <= x <= 8)
+	 * @param y ãƒã‚¹ã®Yåº§æ¨™(0 <= y <= 8)
+	 * @return (x, y) ã®ãƒã‚¹ã®å€¤(ç©ºç™½ã¯0)
 	 * @throws IllegalArgumentException
 	 */
 	public int get(int x, int y) throws IllegalArgumentException {
@@ -21,10 +21,10 @@ public class Sudoku implements Cloneable {
 	}
 	
 	/**
-	 * 1‚Â‚Ìƒ}ƒX‚Ì’l‚ğİ’è‚·‚éB
-	 * @param x ƒ}ƒX‚ÌXÀ•W(0 <= x <= 8)
-	 * @param y ƒ}ƒX‚ÌYÀ•W(0 <= y <= 8)
-	 * @param value (x, y) ‚Ìƒ}ƒX‚Éİ’è‚·‚é’l(0 <= value <= 9, ‹ó”’‚Í0)
+	 * 1ã¤ã®ãƒã‚¹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @param x ãƒã‚¹ã®Xåº§æ¨™(0 <= x <= 8)
+	 * @param y ãƒã‚¹ã®Yåº§æ¨™(0 <= y <= 8)
+	 * @param value (x, y) ã®ãƒã‚¹ã«è¨­å®šã™ã‚‹å€¤(0 <= value <= 9, ç©ºç™½ã¯0)
 	 * @throws IllegalArgumentException
 	 */
 	public void set(int x, int y, int value) throws IllegalArgumentException {
@@ -38,12 +38,12 @@ public class Sudoku implements Cloneable {
 	}
 	
 	/**
-	 * Œ»İ‚Ìƒ}ƒX‘S‘Ì‚Ìó‘Ô‚ª”“Æ‚Ìƒ‹[ƒ‹‚É‰ˆ‚Á‚Ä‚¢‚é‚©”Û‚©‚ğæ“¾‚·‚éB
-	 * ‚·‚È‚í‚¿A“¯‚¶sA—ñ‚Ü‚½‚ÍƒuƒƒbƒN“à‚É(0ˆÈŠO‚Ì)“¯‚¶”š‚ª2‚ÂˆÈã“ü‚Á‚Ä‚éê‡‚Í false ‚ğ•Ô‚·B
-	 * @return ƒ}ƒX‘S‘Ì‚Ìó‘Ô‚ª”“Æ‚Ìƒ‹[ƒ‹‚É‰ˆ‚Á‚Ä‚¢‚é‚©
+	 * ç¾åœ¨ã®ãƒã‚¹å…¨ä½“ã®çŠ¶æ…‹ãŒæ•°ç‹¬ã®ãƒ«ãƒ¼ãƒ«ã«æ²¿ã£ã¦ã„ã‚‹ã‹å¦ã‹ã‚’å–å¾—ã™ã‚‹ã€‚
+	 * ã™ãªã‚ã¡ã€åŒã˜è¡Œã€åˆ—ã¾ãŸã¯ãƒ–ãƒ­ãƒƒã‚¯å†…ã«(0ä»¥å¤–ã®)åŒã˜æ•°å­—ãŒ2ã¤ä»¥ä¸Šå…¥ã£ã¦ã‚‹å ´åˆã¯ false ã‚’è¿”ã™ã€‚
+	 * @return ãƒã‚¹å…¨ä½“ã®çŠ¶æ…‹ãŒæ•°ç‹¬ã®ãƒ«ãƒ¼ãƒ«ã«æ²¿ã£ã¦ã„ã‚‹ã‹
 	 */
 	public boolean isCorrect() {
-		// “¯‚¶s‚É“¯‚¶”š‚ª2‚ÂˆÈã“ü‚Á‚Ä‚¢‚½‚ç false
+		// åŒã˜è¡Œã«åŒã˜æ•°å­—ãŒ2ã¤ä»¥ä¸Šå…¥ã£ã¦ã„ãŸã‚‰ false
 		for (int y = 0; y < 9; ++y) {
 			boolean[] contains = new boolean[9];
 			for (int x = 0; x < 9; ++x) {
@@ -57,7 +57,7 @@ public class Sudoku implements Cloneable {
 			}
 		}
 		
-		// “¯‚¶—ñ‚É“¯‚¶”š‚ª2‚ÂˆÈã“ü‚Á‚Ä‚¢‚½‚ç false
+		// åŒã˜åˆ—ã«åŒã˜æ•°å­—ãŒ2ã¤ä»¥ä¸Šå…¥ã£ã¦ã„ãŸã‚‰ false
 		for (int x = 0; x < 9; ++x) {
 			boolean[] contains = new boolean[9];
 			for (int y = 0; y < 9; ++y) {
@@ -71,7 +71,7 @@ public class Sudoku implements Cloneable {
 			}
 		}
 
-		// “¯‚¶ƒuƒƒbƒN“à‚É“¯‚¶”š‚ª2‚ÂˆÈã“ü‚Á‚Ä‚¢‚½‚ç false
+		// åŒã˜ãƒ–ãƒ­ãƒƒã‚¯å†…ã«åŒã˜æ•°å­—ãŒ2ã¤ä»¥ä¸Šå…¥ã£ã¦ã„ãŸã‚‰ false
 		for (int block = 0; block < 9; ++block) {
 			boolean[] contains = new boolean[9];
 			for (int i = 0; i < 9; ++i) {
@@ -91,8 +91,8 @@ public class Sudoku implements Cloneable {
 	}
 	
 	/**
-	 * ƒ}ƒX‚ª‚·‚×‚Ä(0ˆÈŠO‚Ì)”š‚Å–„‚Ü‚Á‚Ä‚¢‚é‚©”Û‚©‚ğæ“¾‚·‚éB
-	 * @return ƒ}ƒX‚ª‚·‚×‚Ä”š‚Å–„‚Ü‚Á‚Ä‚¢‚é‚©
+	 * ãƒã‚¹ãŒã™ã¹ã¦(0ä»¥å¤–ã®)æ•°å­—ã§åŸ‹ã¾ã£ã¦ã„ã‚‹ã‹å¦ã‹ã‚’å–å¾—ã™ã‚‹ã€‚
+	 * @return ãƒã‚¹ãŒã™ã¹ã¦æ•°å­—ã§åŸ‹ã¾ã£ã¦ã„ã‚‹ã‹
 	 */
 	public boolean isFilled() {
 		for (int y = 0; y < 9; ++y) {

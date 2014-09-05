@@ -2,12 +2,12 @@
 public class CharCode {
 	
 	/**
-	 * ‰üsƒR[ƒh
+	 * æ”¹è¡Œã‚³ãƒ¼ãƒ‰
 	 */
 	static final String NL = System.getProperty("line.separator");
 	
 	/**
-	 * ”¼ŠpƒXƒy[ƒX
+	 * åŠè§’ã‚¹ãƒšãƒ¼ã‚¹
 	 */
 	static final char SPACE = ' ';
 
