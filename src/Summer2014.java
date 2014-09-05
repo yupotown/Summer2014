@@ -1,22 +1,16 @@
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.*;
 
 
 public class Summer2014 {
 
 	public static void main(String[] args) throws IOException, SudokuFormatException {
 		// ñ‚ëËÇÃì«Ç›çûÇ›
-		Sudoku problem = new SudokuReader().read(new ByteArrayInputStream((
-				"009300000" + CharCode.NL
-				+ "007009000" + CharCode.NL
-				+ "000000810" + CharCode.NL
-				+ "080000000" + CharCode.NL
-				+ "610020000" + CharCode.NL
-				+ "000000503" + CharCode.NL
-				+ "000900000" + CharCode.NL
-				+ "005007004" + CharCode.NL
-				+ "020000060"
-				).getBytes()));
+		Sudoku problem;
+		if (args.length == 0) {
+			problem = new SudokuReader().read(System.in);
+		} else {
+			problem = new SudokuReader().read(new FileInputStream(args[0]));
+		}
 		
 		// ñ‚ëËÇï\é¶
 		System.out.println(problem);
